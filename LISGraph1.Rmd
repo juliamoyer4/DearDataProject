@@ -1,0 +1,52 @@
+---
+title: "L I S 407 Dear Data"
+output: html_document
+date: "2025-10-17"
+author: "Julia Moyer"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(dplyr)
+musicdata <- read_csv("LIS407JuliaMoyer.csv") |>
+  select(where(~ !all(is.na(.))))
+```
+### Project Description 
+
+I recorded my personal listening habits for two weeks to discover more about how my music choices are affected by my activities and moods. I have been able to complete this project as a part of my Data Storytelling class to refine our skills to display data in an easy-to-read format and to be able to engage with the viewer and tell the story about the data collected. I chose to record my data about my personal habits regarding music listening because music is a large part of my life, and I listen to music daily. Through my collection of my music listening data, I can look deeper into how music impacts and is impacted through my activities, moods, and times of day. I am able to display my findings through different visualizations to help tell my story of my personal music listening habits. From my data collection and analysis, I found that I listened to music the most when stressed and the genre I listened to most was Jazz Fusion.
+
+### Data Collection
+
+For this project, I chose to track genres, time of day listened, duration of time listened, activity while listening, and my mood. I have always been curious about my music listening habits and seeing if there are any connections in results. Furthermore, because of my love of consumer science, I think it is intriguing to look at my music habits through a lens of consumption and by seeing myself as the consumer. This choice was also realistic because it was manageable to record the data on an Excel Spreadsheet every day, multiple times a day. Utilizing the Excel Spreadsheet also allowed me to utilize my Excel skills from prior courses to analyze and make my data easier for me to read and understand. 
+
+The process of collecting data went smoothly and I was able to remember each time I started and ended listening to music to record my data on the spreadsheet. After the first week, it felt a little burdensome recording smaller listening sessions such as a short walk to class. Through collecting this data, it also helped me check in with myself and be more aware of how I felt and how my music listening choices were affected.
+
+### Data Analysis and Organization
+
+After my data collection period, I finished with forty-seven entries of data. Each row represented a single listening session. Each column represented a category of data being collected such as date, genre, time of day, duration, activity, and mood. One thing that stuck out to me was the large amount of Jazz Fusion I listened to, along with the most prominent mood being stress. Through looking into this data, it helped me realize how music plays a role with my emotions.
+
+### Visualization
+
+Through analyzing my data, I found that the correlation between mood and genre to be the most interesting, so for my visualization in R, I utilized a bar graph to visualize the mood, duration, and genre. This helped to make my data clear by visualizing the time spent in each mood for each genre and putting them side by side for comparison. The colors display the mood while the Y axis is the duration of music listened to in minutes and the X axis is the genre of music.
+
+Below is my visualization of my data titled “Time Spent Listening to Genres by Mood”. From this visualization you can see that Jazz Fusion has the most time and most of the time spent listening to Jazz Fusion is with the mood stressed. I was really surprised to see the mood associated with Jazz Fusion because I associated Jazz Fusion with calmness, tranquility, and relaxation. This could also mean that when feeling stressed, I turn to Jazz Fusion to calm down.  Other moods, such as pop and rock, I listened to much less and they had fewer emotions associated with them. Utilizing R to create this visualization helped me learn more about data storytelling utilizing technical skills with functions such as geom_col() to create my bar graph.
+
+```{r musicdata, echo=FALSE}
+ggplot(musicdata, aes(x = Genres, y = Duration, fill = Mood)) +
+  geom_col(position = position_dodge2(preserve = "single"),
+           stat = "summary",
+           fun = sum) +
+  labs(title = "Time Spent Listening to Genres by Mood",
+       x = "Genre",
+       y = "Time Listening (In Minutes)") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Calm" = "#7bbcb6", "Happy" = "#FFB975", "Stressed" = "#F78899", "Tired" = "#333C7A")) +
+theme(axis.text.x = element_text(angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0, 500, by = 50))
+```
+ 
+In my hand drawn visualization inspired by the book “Dear Data” by Giorgia Lupi and Stefanie Posavec, I also focused on genre and mood, while also highlighting the duration of time spent listening. The opportunity of designing the hand drawn visualization allowed me to showcase my creativity and to create a more personal visualization. The challenge with a hand drawn unique visualization is that it can be difficult to be precise when looking to represent the accurate durations.
+
+### Conclusion
+
+In conclusion, this project has developed my skill to unpack the data to tell a story about even personal data such as my own music listening habits. Looking at data and being able to unwrap the story that it is trying to tell us is a vital skill. These skills I have learned and developed will help me look into consumer behavior and also how to understand the story and retell it to others.

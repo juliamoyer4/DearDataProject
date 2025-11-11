@@ -1,0 +1,29 @@
+L I S 407 Assignment 1
+Julia Moyer
+
+
+Title: Listening Habits by Genre, Mood, Activity, and Duration
+
+Description
+I recorded two weeks of personal music listening and documenting genre, mood,
+activity, time of day, and date of music listened to.
+
+Format
+There are 47 rows, not including the headers, and there are 6 columns. 
+  Genre
+    Genre of music.
+  Mood  
+    How I was feeling.
+  Activity
+    What I was doing at the time.
+  Time of Day
+    Time of the day measured in hours and minutes.
+  Duration
+    How long I listened to the music in minutes.
+  Date
+    Month and day of time listened.
+
+Source
+I recorded data every day into an excel sheet in an orderly format. I 
+collected my data at the start of and at the end of the listening period so 
+that I could record duration and start and end times.
